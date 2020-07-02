@@ -1,0 +1,38 @@
+- name: Enable nginx 1.12
+  command: amazon-linux-extras enable nginx1.12
+
+- name: Install nginx 1.12
+  yum:
+    name: nginx
+    state: present
+
+- name: Start nginx 1.12
+  service: name=nginx enabled=yes state=started
+
+- name: Copy nginx config files
+  copy:
+    src: "../files/nginx.conf"
+    dest: "/etc/nginx/nginx.conf"
+    mode: 0644
+
+- name: Create directory
+  file:
+    path: "/var/www/iamraivis"
+    state: directory
+
+- name: Copy static files
+  copy:
+    src: "./files/static_website/"
+    dest: "/var/www/iamraivis/"
+    mode: 0644
+
+- name: Update static config
+  copy:
+    src: "../files/static_website.conf"
+    dest: "/etc/nginx/conf.d/iamraivis.conf"
+    mode: 0644
+
+- name: Restart nginx
+  service: name=nginx enabled=yes state=restarted
+
+
