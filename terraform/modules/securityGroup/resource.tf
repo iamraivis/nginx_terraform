@@ -52,7 +52,7 @@ resource "aws_security_group" "sg_80" {
 	project     = "${var.project_tag}"
 	department  = "${var.department_tag}"
 	}
-
+}
 resource "aws_security_group" "sg_https" {
   name   = "sg_https"
   vpc_id = "${var.vpc_id}"
@@ -70,7 +70,7 @@ resource "aws_security_group" "sg_https" {
     protocol     = "-1"
     cidr_blocks  = ["0.0.0.0/0"]
   }
-
+}
 resource "aws_security_group" "sg_http" {
   name   = "sg_http"
   vpc_id = "${var.vpc_id}"
