@@ -26,7 +26,7 @@ module "instanceModule" {
 		region               = "${var.region}"
 		vpc_id               = "${module.networkModule.vpc_id}"
 		subnet_public_id     = "${module.networkModule.public_subnets[0]}"
-		security_group_ids   = ["${module.securityGroupModule.sg_22}", "${module.securityGroupModule.sg_80}"]
+		security_group_ids   = ["${module.securityGroupModule.sg_22}", "${module.securityGroupModule.sg_80}", "${module.securityGroupModule.sg_http}", "${module.securityGroupModule.sg_https}"]
 		environment_tag      = "${var.environment_tag}"
 		project_tag          = "${var.project_tag}"
 		department_tag       = "${var.department_tag}"
